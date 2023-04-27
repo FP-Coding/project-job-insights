@@ -1,8 +1,6 @@
 from typing import List, Dict
 from src.insights.jobs import read
 
-PATH = "./data/jobs.csv"
-
 
 def get_unique_industries(path: str) -> List[str]:
     list_jobs = read(path)
@@ -18,6 +16,3 @@ def filter_by_industry(jobs: List[Dict], industry: str) -> List[Dict]:
         filter((lambda job: job["industry"] == industry), jobs)
     )
     return filteredByType
-
-
-get_unique_industries(PATH)

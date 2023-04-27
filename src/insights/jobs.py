@@ -3,9 +3,6 @@ from typing import List, Dict
 import csv
 
 
-PATH = "./data/jobs.csv"
-
-
 @lru_cache
 def read(path: str) -> List[Dict]:
     try:
