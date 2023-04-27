@@ -18,14 +18,9 @@ def read(path: str) -> List[Dict]:
 
 
 def get_unique_job_types(path: str) -> List[str]:
-    try:
-        list_jobs = read(path)
-        if len(list_jobs) == 0:
-            raise FileNotFoundError
-        job_types = {job["job_type"] for job in list_jobs}
-        return job_types
-    except FileNotFoundError:
-        return {}
+    list_jobs = read(path)
+    job_types = {job["job_type"] for job in list_jobs}
+    return job_types
 
 
 def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:

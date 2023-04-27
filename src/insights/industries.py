@@ -1,37 +1,23 @@
 from typing import List, Dict
+from src.insights.jobs import read
+
+PATH = "./data/jobs.csv"
 
 
 def get_unique_industries(path: str) -> List[str]:
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    raise NotImplementedError
+    list_jobs = read(path)
+    job_industries = {
+        job["industry"]
+        for job in list_jobs
+        if job["industry"] != ''}
+    return job_industries
 
 
 def filter_by_industry(jobs: List[Dict], industry: str) -> List[Dict]:
-    """Filters a list of jobs by industry
+    filteredByType = list(
+        filter((lambda job: job["industry"] == industry), jobs)
+    )
+    return filteredByType
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
 
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    raise NotImplementedError
+get_unique_industries(PATH)
