@@ -25,3 +25,6 @@ def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
         filter((lambda job: job["job_type"] == job_type), jobs)
     )
     return filteredByType
+
+list = read('data/jobs.csv')
+print([list[-3], list[-2], list[-1]])
